@@ -9,6 +9,7 @@ COPY ./superset-init.sh /app/superset-init.sh
 COPY predefined-database.json /app/predefined-database.json
 
 # Install the required packages and change the permission of the entrypoint script
+RUN apt-get update && apt-get install -y build-essential
 RUN pip install sqlalchemy-trino && \
     chmod +rwx /app/superset-init.sh
 
